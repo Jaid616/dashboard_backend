@@ -133,7 +133,7 @@ const logout = (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    res.json({ status: "Login Succesfully" });
+    res.status(200).json({ status: "Logout Succesfully" });
   } catch (error) {
     res.status(404).json({ message: "Unable to Logout" });
   }
