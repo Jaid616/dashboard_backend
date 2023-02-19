@@ -52,6 +52,7 @@ const loginUser = async (req, res) => {
           if (user.email === email && isMatch) {
             const token = jwt.sign(
               { userID: user.id },
+              secure: process.env.NODE_ENV !== "development",
               process.env.SECRET_KEY,
               { expiresIn: "1d",
               sameSite: "None", }
