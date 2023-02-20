@@ -52,16 +52,13 @@ const loginUser = async (req, res) => {
           if (user.email === email && isMatch) {
             const token = jwt.sign(
               { userID: user.id },
-             
               process.env.SECRET_KEY,
-              { expiresIn: "1d", }
-             
+              { expiresIn: "1d" }
             );
             res.cookie(String(user.id), token, {
               path: "/",
               expires: new Date(Date.now() + 1000 * 90000),
               httpOnly: true,
-             
             });
 
             res.status(200).json({ status: "Login Succesfully" });
@@ -136,7 +133,7 @@ const logout = (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    res.status(200).json({ status: "Logout Succesfully" });
+    res.json({ status: "Logout Succesfully" });
   } catch (error) {
     res.status(404).json({ message: "Unable to Logout" });
   }
