@@ -52,16 +52,17 @@ const loginUser = async (req, res) => {
           if (user.email === email && isMatch) {
             const token = jwt.sign(
               { userID: user.id },
-              secure: process.env.NODE_ENV !== "development",
+             
               process.env.SECRET_KEY,
-              { expiresIn: "1d",
-              sameSite: "None", }
+              { expiresIn: "1d", }
              
             );
             res.cookie(String(user.id), token, {
               path: "/",
               expires: new Date(Date.now() + 1000 * 90000),
               httpOnly: true,
+              sameSite : None,
+              secure
             });
 
             res.status(200).json({ status: "Login Succesfully" });
