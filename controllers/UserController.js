@@ -59,8 +59,8 @@ const loginUser = async (req, res) => {
               path: "/",
               expires: new Date(Date.now() + 1000 * 90000),
               httpOnly: true,
-              sameSite: None,
-              Secure 
+              SameSite:None,
+              Secure
             });
 
             res.status(200).json({ status: "Login Succesfully" });
