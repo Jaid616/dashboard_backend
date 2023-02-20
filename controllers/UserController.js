@@ -59,7 +59,6 @@ const loginUser = async (req, res) => {
               path: "/",
               expires: new Date(Date.now() + 1000 * 90000),
               httpOnly: true,
-              domain :"dashboard-4khu.onrender.com"
               sameSite:none,
               Secure
              
